@@ -174,7 +174,7 @@ export default function Services() {
 
             <div className="relative h-full w-full max-w-[480px] animate-laptop-float">
               <Image
-                src="/image/laptop.png"
+                src="/image/service.png"
                 alt="Web development technologies displayed around a laptop"
                 fill
                 priority

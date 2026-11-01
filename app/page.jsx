@@ -1,10 +1,11 @@
 "use client";
 
+import GithubIcon from "@/components/GithubIcon";
 import Image from "next/image";
 import Link from "next/link";
 
 const socialLinks = [
-  { name: "GitHub", icon: "GH", href: "https://github.com/" },
+  { name: "GitHub", icon: <GithubIcon />, href: "https://github.com/" },
   { name: "LinkedIn", icon: "in", href: "https://linkedin.com/" },
   { name: "X", icon: "𝕏", href: "https://x.com/" },
   { name: "Email", icon: "✉", href: "mailto:your@email.com" },
@@ -33,8 +34,8 @@ export default function Home() {
 
           {/* Main heading */}
           <h1 className="animate-fade-up animation-delay-400 text-[42px] font-extrabold leading-[1.15] tracking-tight sm:text-[54px] lg:text-[62px]">
-            Muhammad{" "}
-            <span className="text-[#1685f8]">Zamin</span>
+            ZAMIN{" "}
+            <span className="text-[#1685f8]">RAZZAQ</span>
           </h1>
 
           {/* Developer title */}

@@ -1,40 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-
-  const [darkMode, setDarkMode] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "light") {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newMode = !darkMode;
-
-    setDarkMode(newMode);
-
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -47,102 +20,91 @@ export default function Navbar() {
     <header
       className="
         sticky top-0 z-[1000]
-        h-[86px]
-        w-full
-        border-b border-white/[0.07]
-        bg-[rgba(9,16,26,0.92)]
+        h-[86px] w-full
+        border-b border-[#e5e7eb]
+        bg-white/90
         backdrop-blur-[15px]
-        transition-all duration-300
-
-        dark:bg-[rgba(9,16,26,0.92)]
+        transition-colors duration-300
         dark:border-white/[0.07]
-
+        dark:bg-[rgba(9,16,26,0.92)]
         max-md:h-[75px]
       "
     >
       <div
         className="
-          mx-auto
-          flex h-full
-          max-w-[1400px]
-          items-center
-          justify-between
-          px-[35px]
-
+          relative mx-auto flex h-full max-w-[1400px]
+          items-center justify-between px-[35px]
           max-lg:px-[25px]
           max-md:px-[20px]
           max-[480px]:px-[15px]
         "
       >
-        {/* ================= LOGO ================= */}
-
+        {/* LEFT SIDE - WEBSITE LOGO */}
         <Link
           href="/"
           onClick={() => setMenuOpen(false)}
           className="
-            flex
-            items-center
-            gap-[13px]
-            no-underline
-
-            text-[30px]
-            font-bold
-            tracking-[-0.5px]
-            text-white
-
-            transition-colors duration-300
-
-            dark:text-white
-
-            max-md:text-[24px]
-            max-[480px]:text-[21px]
+            z-20 flex items-center
+            transition-transform duration-300
+            hover:scale-105
           "
         >
-          <span
+          <Image
+            src="/image/zamin-logo1.png"
+            alt="ZAMIN Website Logo"
+            width={180}
+            height={65}
+            priority
             className="
-              flex
-              h-[51px]
-              w-[51px]
-              items-center
-              justify-center
-              rounded-[8px]
-
-              bg-gradient-to-br
-              from-[#1688ff]
-              to-[#0066d6]
-
-              text-[38px]
-              font-extrabold
-              italic
-              text-white
-
-              shadow-[0_0_18px_rgba(0,132,255,0.35)]
-
-              max-md:h-[43px]
-              max-md:w-[43px]
-              max-md:text-[31px]
-
-              max-[480px]:h-[39px]
-              max-[480px]:w-[39px]
-              max-[480px]:text-[28px]
+              h-[58px] w-[180px]
+              object-contain object-left
+              max-md:h-[48px] max-md:w-[145px]
+              max-[480px]:h-[42px] max-[480px]:w-[125px]
             "
-          >
-            Z
-          </span>
-
-          <span>Zamin</span>
+          />
         </Link>
 
-        {/* ================= DESKTOP / MOBILE NAV ================= */}
+        {/* CENTER - PROFILE IMAGE */}
+        <Link
+          href="/about"
+          aria-label="Visit About page"
+          className="
+            absolute left-1/2 top-1/2 z-10
+            -translate-x-1/2 -translate-y-1/2
+            rounded-full
+            shadow-[0_0_18px_rgba(22,136,255,0.30)]
+            transition-all duration-300 ease-out
+            hover:scale-110
+            hover:shadow-[0_0_30px_rgba(22,136,255,0.65)]
+            max-md:shadow-[0_0_14px_rgba(22,136,255,0.30)]
+          "
+        >
+          <div
+            className="
+              relative h-[60px] w-[60px]
+              overflow-hidden rounded-full
+              shadow-[0_0_15px_3px_rgba(22,136,255,0.35),0_0_25px_5px_rgba(22,136,255,0.15)]
+              transition-all duration-300 ease-out
+              max-md:h-[46px] max-md:w-[46px]
+              max-[480px]:h-[40px] max-[480px]:w-[40px]
+            "
+          >
+            <Image
+              src="/image/Profile3.jpeg"
+              alt="Muhammad Zamin"
+              fill
+              sizes="55px"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </Link>
 
+        {/* RIGHT SIDE - NAVIGATION */}
         <nav
           className={`
-            flex
-            h-full
-            items-center
-            gap-[60px]
-
-            max-lg:gap-[30px]
+            ml-auto flex h-full items-center gap-[45px]
+            max-lg:gap-[25px]
 
             max-md:absolute
             max-md:left-0
@@ -153,13 +115,14 @@ export default function Navbar() {
             max-md:items-stretch
             max-md:gap-0
             max-md:border-t
-            max-md:border-white/[0.06]
-            max-md:bg-[#0b121d]
+            max-md:border-[#e5e7eb]
+            max-md:bg-white
             max-md:p-[20px]
-
-            max-md:transform
+            max-md:shadow-lg
             max-md:transition-all
             max-md:duration-300
+            dark:max-md:border-white/[0.06]
+            dark:max-md:bg-[#0b121d]
 
             ${
               menuOpen
@@ -179,51 +142,33 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`
-                  group
-                  relative
-                  flex
-                  h-full
-                  items-center
-                  text-[17px]
-                  font-semibold
-                  no-underline
-
-                  transition-colors
-                  duration-300
+                  group relative flex h-full items-center
+                  text-[16px] font-semibold no-underline
+                  transition-colors duration-300
 
                   max-md:h-auto
                   max-md:border-b
-                  max-md:border-white/[0.06]
+                  max-md:border-[#e5e7eb]
                   max-md:px-[10px]
-                  max-md:py-[17px]
-                  max-md:text-[16px]
+                  max-md:py-[16px]
+                  dark:max-md:border-white/[0.06]
 
                   ${
                     isActive
-                      ? "text-[#2494ff]"
-                      : "text-[#d7dce4] hover:text-[#2494ff]"
+                      ? "text-[#1688ff]"
+                      : "text-[#4b5563] hover:text-[#1688ff] dark:text-[#d7dce4] dark:hover:text-[#2494ff]"
                   }
-
-                  max-md:after:hidden
                 `}
               >
                 {link.name}
 
-                {/* Active underline */}
+                {/* ACTIVE UNDERLINE */}
                 <span
                   className={`
-                    absolute
-                    bottom-0
-                    left-0
-                    right-0
-                    h-[4px]
-                    rounded-t-[5px]
-                    bg-[#1688ff]
-                    transition-transform
-                    duration-300
-
+                    absolute bottom-0 left-0 right-0 h-[4px]
+                    rounded-t-[5px] bg-[#1688ff]
+                    transition-transform duration-300
                     max-md:hidden
-
                     ${
                       isActive
                         ? "scale-x-100"
@@ -232,18 +177,12 @@ export default function Navbar() {
                   `}
                 />
 
-                {/* Mobile active background */}
+                {/* MOBILE ACTIVE BACKGROUND */}
                 {isActive && (
                   <span
                     className="
-                      pointer-events-none
-                      absolute
-                      inset-0
-                      -z-10
-                      hidden
-                      rounded-[6px]
-                      bg-[#2494ff]/[0.08]
-
+                      pointer-events-none absolute inset-0 -z-10
+                      hidden rounded-[6px] bg-[#1688ff]/[0.08]
                       max-md:block
                     "
                   />
@@ -253,156 +192,46 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* ================= RIGHT SIDE ================= */}
-
-        <div
+        {/* MOBILE MENU BUTTON */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
           className="
-            flex
-            items-center
-            gap-[20px]
-
-            max-[480px]:gap-[10px]
+            z-20 hidden h-[42px] w-[42px]
+            cursor-pointer flex-col items-center
+            justify-center rounded-[8px]
+            border border-[#d1d5db]
+            bg-transparent p-[8px]
+            max-md:flex
+            dark:border-white/20
           "
         >
-          {/* ================= THEME TOGGLE ================= */}
+          <span
+            className={`
+              block h-[3px] w-full rounded-[10px]
+              bg-[#1688ff] transition-all duration-300
+              ${menuOpen ? "translate-y-[8px] rotate-45" : ""}
+            `}
+          />
 
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label="Toggle dark mode"
-            className="
-              relative
-              flex
-              h-[30px]
-              w-[60px]
-              cursor-pointer
-              items-center
-              justify-between
-              rounded-full
-              border-2
-              border-[#258de5]
-              bg-transparent
-              px-[3px]
+          <span
+            className={`
+              my-[5px] block h-[3px] w-full rounded-[10px]
+              bg-[#1688ff] transition-all duration-300
+              ${menuOpen ? "opacity-0" : "opacity-100"}
+            `}
+          />
 
-              transition-all
-              duration-300
-
-              hover:shadow-[0_0_15px_rgba(37,141,229,0.35)]
-
-              max-lg:w-[95px]
-
-              max-md:h-[42px]
-              max-md:w-[75px]
-
-              max-[480px]:w-[68px]
-            "
-          >
-            {/* Sun / Moon */}
-            <span
-              className="
-                relative
-                z-10
-                text-[25px]
-                leading-none
-
-                max-md:text-[28px]
-              "
-            >
-              {darkMode ? "☀" : "☾"}
-            </span>
-
-            {/* Toggle Circle */}
-            <span
-              className={`
-                absolute
-                top-[3px]
-                h-[22px]
-                w-[22px]
-                rounded-full
-                bg-[#53aaff]
-
-                shadow-[0_0_12px_rgba(83,170,255,0.4)]
-
-                transition-all
-                duration-300
-
-                max-md:top-[5px]
-                max-md:h-[28px]
-                max-md:w-[28px]
-
-               
-                ${darkMode ? "right-[3px]" : "left-[3px]"}
-
-                max-md:${darkMode ? "right-[5px]" : "left-[5px]"}
-              `}
-            />
-          </button>
-
-          {/* ================= MOBILE MENU ================= */}
-
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className="
-              hidden
-              h-[45px]
-              w-[45px]
-              cursor-pointer
-              rounded-[8px]
-              border
-              border-white/20
-              bg-transparent
-              p-[8px]
-
-              max-md:block
-            "
-          >
-            <span
-              className={`
-                block
-                h-[3px]
-                w-full
-                rounded-[10px]
-                bg-[#2494ff]
-                transition-all
-                duration-300
-
-                ${menuOpen ? "translate-y-[8px] rotate-45" : ""}
-              `}
-            />
-
-            <span
-              className={`
-                my-[5px]
-                block
-                h-[3px]
-                w-full
-                rounded-[10px]
-                bg-[#2494ff]
-                transition-all
-                duration-300
-
-                ${menuOpen ? "opacity-0" : "opacity-100"}
-              `}
-            />
-
-            <span
-              className={`
-                block
-                h-[3px]
-                w-full
-                rounded-[10px]
-                bg-[#2494ff]
-                transition-all
-                duration-300
-
-                ${menuOpen ? "-translate-y-[8px] -rotate-45" : ""}
-              `}
-            />
-          </button>
-        </div>
+          <span
+            className={`
+              block h-[3px] w-full rounded-[10px]
+              bg-[#1688ff] transition-all duration-300
+              ${menuOpen ? "-translate-y-[8px] -rotate-45" : ""}
+            `}
+          />
+        </button>
       </div>
     </header>
   );
