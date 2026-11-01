@@ -1,14 +1,27 @@
 "use client";
 
 import GithubIcon from "@/components/GithubIcon";
+import InstagramIcon from "@/components/InstagramIcon";
 import Image from "next/image";
 import Link from "next/link";
 
 const socialLinks = [
-  { name: "GitHub", icon: <GithubIcon />, href: "https://github.com/" },
-  { name: "LinkedIn", icon: "in", href: "https://linkedin.com/" },
+  {
+  name: "GitHub",
+  icon: <GithubIcon />,
+  href: "https://github.com/M-ZAMIN",
+  },
+  {
+  name: "LinkedIn",
+  icon: "in",
+  href: "https://www.linkedin.com/in/zamin-razzaq-9b2b473b4/",
+},
   { name: "X", icon: "𝕏", href: "https://x.com/" },
-  { name: "Email", icon: "✉", href: "mailto:your@email.com" },
+  {
+  name: "Instagram",
+  icon: <InstagramIcon />,
+  href: "https://www.instagram.com/zamin_1761/",
+},
 ];
 
 export default function Home() {
