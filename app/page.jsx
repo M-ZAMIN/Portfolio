@@ -7,51 +7,84 @@ import Link from "next/link";
 
 const socialLinks = [
   {
-  name: "GitHub",
-  icon: <GithubIcon />,
-  href: "https://github.com/M-ZAMIN",
+    name: "GitHub",
+    icon: <GithubIcon />,
+    href: "https://github.com/M-ZAMIN",
   },
   {
-  name: "LinkedIn",
-  icon: "in",
-  href: "https://www.linkedin.com/in/zamin-razzaq-9b2b473b4/",
-},
-  { name: "X", icon: "𝕏", href: "https://x.com/" },
+    name: "LinkedIn",
+    icon: "in",
+    href: "https://www.linkedin.com/in/zamin-razzaq-9b2b473b4/",
+  },
   {
-  name: "Instagram",
-  icon: <InstagramIcon />,
-  href: "https://www.instagram.com/zamin_1761/",
-},
+    name: "X",
+    icon: "𝕏",
+    href: "https://x.com/",
+  },
+  {
+    name: "Instagram",
+    icon: <InstagramIcon />,
+    href: "https://www.instagram.com/zamin_1761/",
+  },
 ];
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050d18] text-white">
 
-      {/* Background glow */}
+      {/* BACKGROUND GLOW */}
       <div className="pointer-events-none absolute inset-0">
         <div className="animate-glow absolute right-[8%] top-[8%] h-[450px] w-[450px] rounded-full bg-blue-600/10 blur-[120px]" />
+
         <div className="animate-glow-delayed absolute bottom-[-150px] left-[35%] h-[400px] w-[400px] rounded-full bg-blue-700/10 blur-[120px]" />
       </div>
 
-      {/* Hero section */}
-      <section className="relative mx-auto flex min-h-screen max-w-[1440px] items-center overflow-hidden border-b border-white/10 px-6 sm:px-10 lg:px-[7.3%]">
+      {/* HERO SECTION */}
+      <section className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col items-center overflow-hidden border-b border-white/10 px-6 sm:px-10 md:flex-row md:items-center lg:px-[7.3%]">
 
-        {/* Left content */}
-        <div className="animate-slide-left relative z-20 w-full max-w-[600px] py-24 lg:py-0">
+        {/* =====================================
+            MOBILE PROFILE IMAGE
+            ABOVE TEXT
+        ====================================== */}
+        <div className="relative z-10 mb-6 mt-10 flex h-[300px] w-full items-center justify-center md:hidden">
+
+          {/* Blue Shadow Circle */}
+          <div className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0754bd]/40 shadow-[0_0_50px_20px_rgba(22,133,248,0.25)] blur-[1px]" />
+
+          {/* Extra Blue Glow */}
+          <div className="animate-glow absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/15 blur-[65px]" />
+
+          {/* Profile Image */}
+          <div className="animate-mobile-profile relative z-10 h-full w-full max-w-[320px]">
+            <Image
+              src="/image/profile.png"
+              alt="Muhammad Zamin - Frontend Developer"
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain object-bottom"
+            />
+          </div>
+
+        </div>
+
+        {/* =====================================
+            LEFT CONTENT
+        ====================================== */}
+        <div className="animate-slide-left relative z-20 w-full max-w-[600px] py-12 md:max-w-[52%] md:py-24 lg:max-w-[600px] lg:py-0">
 
           {/* Intro */}
           <p className="animate-fade-up animation-delay-200 mb-2 text-[19px] font-semibold text-white sm:text-[21px]">
             Hello, I'm
           </p>
 
-          {/* Main heading */}
+          {/* Main Heading */}
           <h1 className="animate-fade-up animation-delay-400 text-[42px] font-extrabold leading-[1.15] tracking-tight sm:text-[54px] lg:text-[62px]">
             ZAMIN{" "}
             <span className="text-[#1685f8]">RAZZAQ</span>
           </h1>
 
-          {/* Developer title */}
+          {/* Developer Title */}
           <h2 className="animate-fade-up animation-delay-600 mt-3 text-[26px] font-semibold text-[#789acb] sm:text-[31px] lg:text-[34px]">
             Frontend Developer
           </h2>
@@ -85,7 +118,7 @@ export default function Home() {
 
           </div>
 
-          {/* Social links */}
+          {/* Social Links */}
           <div className="animate-fade-up animation-delay-1200 mt-6 flex items-center gap-4">
             {socialLinks.map((social, index) => (
               <a
@@ -102,7 +135,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Scroll indicator */}
+          {/* Scroll Indicator */}
           <a
             href="#about"
             className="animate-fade-up animation-delay-1400 mt-14 flex items-center gap-4 text-[14px] text-[#8ba8d0] transition hover:text-white"
@@ -115,27 +148,68 @@ export default function Home() {
 
         </div>
 
-        {/* Profile image */}
-        <div className="pointer-events-none absolute bottom-0 right-0 z-10 hidden h-full w-[58%] items-end justify-center lg:flex">
+        {/* =====================================
+            TABLET PROFILE IMAGE
+            768px - 1023px
+        ====================================== */}
+        <div className="pointer-events-none absolute right-0 top-0 z-10 hidden h-[75%] w-[48%] items-start justify-end md:flex lg:hidden">
 
-          {/* Blue circular background */}
-          <div className="animate-circle absolute bottom-[-100px] left-[8%] h-[430px] w-[430px] rounded-full bg-[#0754bd]/40 blur-[1px]" />
+          {/* Blue Glow */}
+          <div className="animate-glow absolute right-[5%] top-[10%] h-[280px] w-[280px] rounded-full bg-blue-600/15 blur-[80px]" />
 
-          <div className="animate-glow absolute bottom-[20px] right-[15%] h-[380px] w-[380px] rounded-full bg-blue-600/10 blur-[80px]" />
-
-          <div className="animate-profile relative z-10 h-[95%] w-full">
+          {/* Profile Image */}
+          <div className="animate-profile relative mt-8 h-full w-full">
             <Image
               src="/image/profile2.png"
               alt="Muhammad Zamin - Frontend Developer"
               fill
               priority
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="object-contain object-bottom"
+              sizes="48vw"
+              className="object-contain object-top"
             />
           </div>
 
-          {/* Handwritten message */}
-          <div className="animate-handwriting absolute right-[5%] top-[20%] z-20 rotate-[-8deg] font-serif text-[30px] italic leading-[1.2] text-[#168cff] lg:text-[34px]">
+        </div>
+
+        {/* =====================================
+            DESKTOP / LAPTOP / 4K PROFILE IMAGE
+            1024px AND ABOVE
+        ====================================== */}
+        <div className="desktop-profile pointer-events-none absolute bottom-0 right-0 z-10 hidden h-full w-[58%] items-end justify-center lg:flex">
+
+          {/* Blue Circular Background */}
+          <div className="animate-circle absolute bottom-[-100px] left-[8%] h-[430px] w-[430px] rounded-full bg-[#0754bd]/40 blur-[1px] 2xl:h-[550px] 2xl:w-[550px]" />
+
+          {/* Extra Blue Glow */}
+          <div className="animate-glow absolute bottom-[20px] right-[15%] h-[380px] w-[380px] rounded-full bg-blue-600/10 blur-[80px] 2xl:h-[480px] 2xl:w-[480px]" />
+
+          {/* Desktop Profile Image */}
+          <div className="animate-profile relative z-10 h-[95%] w-full">
+
+            {/* Normal Laptop / Desktop: profile2.png */}
+            <Image
+              src="/image/profile2.png"
+              alt="Muhammad Zamin - Frontend Developer"
+              fill
+              priority
+              sizes="58vw"
+              className="profile-normal object-contain object-bottom"
+            />
+
+            {/* 4K: profile.png */}
+            <Image
+              src="/image/profile.png"
+              alt="Muhammad Zamin - Frontend Developer"
+              fill
+              priority
+              sizes="58vw"
+              className="profile-4k object-contain object-bottom"
+            />
+
+          </div>
+
+          {/* Handwritten Message */}
+          <div className="animate-handwriting absolute right-[5%] top-[20%] z-20 rotate-[-8deg] font-serif text-[30px] italic leading-[1.2] text-[#168cff] lg:text-[34px] 2xl:right-[8%] 2xl:top-[18%] 2xl:text-[40px]">
             <p>Build</p>
             <p>Something</p>
             <p>Great</p>
@@ -144,22 +218,29 @@ export default function Home() {
 
         </div>
 
-        {/* Mobile profile image */}
-        <div className="pointer-events-none absolute bottom-0 right-[-15%] z-0 h-[55%] w-[75%] animate-mobile-profile opacity-20 lg:hidden">
-          <Image
-            src="/image/profile.png"
-            alt="Muhammad Zamin"
-            fill
-            priority
-            sizes="75vw"
-            className="object-contain object-bottom"
-          />
-        </div>
-
       </section>
 
-      {/* Page animations */}
+      {/* =====================================
+          PAGE ANIMATIONS & RESPONSIVE STYLES
+      ====================================== */}
       <style jsx global>{`
+
+        /* 4K IMAGE SWITCHING */
+        .profile-4k {
+          display: none;
+        }
+
+        @media (min-width: 2560px) {
+          .profile-normal {
+            display: none;
+          }
+
+          .profile-4k {
+            display: block;
+          }
+        }
+
+        /* Slide Left */
         @keyframes slideLeft {
           from {
             opacity: 0;
@@ -171,6 +252,7 @@ export default function Home() {
           }
         }
 
+        /* Fade Up */
         @keyframes fadeUp {
           from {
             opacity: 0;
@@ -182,6 +264,7 @@ export default function Home() {
           }
         }
 
+        /* Slide Right */
         @keyframes slideRight {
           from {
             opacity: 0;
@@ -193,6 +276,7 @@ export default function Home() {
           }
         }
 
+        /* Floating Text */
         @keyframes floatText {
           0%, 100% {
             translate: 0 0;
@@ -202,6 +286,7 @@ export default function Home() {
           }
         }
 
+        /* Glow Effect */
         @keyframes glowEffect {
           0%, 100% {
             opacity: 0.4;
@@ -213,6 +298,7 @@ export default function Home() {
           }
         }
 
+        /* Circle Effect */
         @keyframes circleEffect {
           from {
             opacity: 0;
@@ -224,6 +310,7 @@ export default function Home() {
           }
         }
 
+        /* Scroll Effect */
         @keyframes scrollEffect {
           0%, 100% {
             transform: translateY(0);
@@ -277,14 +364,35 @@ export default function Home() {
           animation: fadeUp 0.7s ease-out both;
         }
 
-        .animation-delay-200 { animation-delay: 0.2s; }
-        .animation-delay-400 { animation-delay: 0.4s; }
-        .animation-delay-600 { animation-delay: 0.6s; }
-        .animation-delay-800 { animation-delay: 0.8s; }
-        .animation-delay-1000 { animation-delay: 1s; }
-        .animation-delay-1200 { animation-delay: 1.2s; }
-        .animation-delay-1400 { animation-delay: 1.4s; }
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+        }
 
+        .animation-delay-400 {
+          animation-delay: 0.4s;
+        }
+
+        .animation-delay-600 {
+          animation-delay: 0.6s;
+        }
+
+        .animation-delay-800 {
+          animation-delay: 0.8s;
+        }
+
+        .animation-delay-1000 {
+          animation-delay: 1s;
+        }
+
+        .animation-delay-1200 {
+          animation-delay: 1.2s;
+        }
+
+        .animation-delay-1400 {
+          animation-delay: 1.4s;
+        }
+
+        /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
           .animate-slide-left,
           .animate-fade-up,
@@ -300,6 +408,7 @@ export default function Home() {
             opacity: 1;
           }
         }
+
       `}</style>
 
     </main>

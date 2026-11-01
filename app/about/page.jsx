@@ -22,8 +22,8 @@ const features = [
 
 const stats = [
   { number: "1+", label: "Years Experience" },
-  { number: "10+", label: "Projects Completed" },
-  { number: "5+", label: "Happy Clients" },
+  { number: "5+", label: "Projects Completed" },
+  { number: "3+", label: "Happy Clients" },
 ];
 
 function FeatureIcon({ type }) {
