@@ -5,19 +5,19 @@ import Image from "next/image";
 
 const features = [
   {
-    icon: "code",
     title: "Clean Code",
     description: "Write maintainable and scalable code",
+    icon: "code",
   },
   {
-    icon: "idea",
     title: "Creative Mindset",
     description: "Turning ideas into reality",
+    icon: "idea",
   },
   {
-    icon: "team",
     title: "Team Player",
     description: "Collaborate and grow together",
+    icon: "team",
   },
 ];
 
@@ -28,40 +28,32 @@ const stats = [
 ];
 
 function FeatureIcon({ type }) {
+  if (type === "code") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <path d="m8 8-4 4 4 4" />
+        <path d="m16 8 4 4-4 4" />
+        <path d="m14 5-4 14" />
+      </svg>
+    );
+  }
+
+  if (type === "idea") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
+        <path d="M8.5 14.5a7 7 0 1 1 7 0c-.8.6-1.2 1.4-1.3 2.5h-4.4c-.1-1.1-.5-1.9-1.3-2.5Z" />
+        <path d="M12 2v2M4.9 4.9l1.4 1.4M19.1 4.9l-1.4 1.4" />
+      </svg>
+    );
+  }
+
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-7 w-7"
-    >
-      {type === "code" && (
-        <>
-          <path d="m8 8-4 4 4 4" />
-          <path d="m16 8 4 4-4 4" />
-          <path d="m14 5-4 14" />
-        </>
-      )}
-
-      {type === "idea" && (
-        <>
-          <path d="M9 18h6" />
-          <path d="M10 22h4" />
-          <path d="M8.5 14.5a7 7 0 1 1 7 0c-.8.6-1.2 1.4-1.3 2.5h-4.4c-.1-1.1-.5-1.9-1.3-2.5Z" />
-          <path d="M12 2v2M4.9 4.9l1.4 1.4M19.1 4.9l-1.4 1.4" />
-        </>
-      )}
-
-      {type === "team" && (
-        <>
-          <circle cx="9" cy="8" r="3" />
-          <path d="M3 20c0-3.3 2.4-5.5 6-5.5s6 2.2 6 5.5" />
-          <path d="M16 5.5a3 3 0 0 1 0 5.8M18 14c2 .6 3 2.5 3 5" />
-        </>
-      )}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3 20c0-3.3 2.4-5.5 6-5.5s6 2.2 6 5.5" />
+      <path d="M16 5.5a3 3 0 0 1 0 5.8M18 14c2 .6 3 2.5 3 5" />
     </svg>
   );
 }
@@ -70,155 +62,28 @@ export default function About() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050d18] text-white">
 
-      {/* BACKGROUND EFFECTS */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="about-glow absolute left-[35%] top-[15%] h-[400px] w-[400px] rounded-full bg-blue-700/[0.04] blur-[120px]" />
-        <div className="about-glow-delayed absolute bottom-[-150px] right-[-100px] h-[400px] w-[400px] rounded-full bg-blue-700/[0.06] blur-[120px]" />
+      {/* BACKGROUND GLOW */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[35%] top-[15%] h-[400px] w-[400px] rounded-full bg-blue-700/[0.05] blur-[120px]" />
+        <div className="absolute bottom-[-150px] right-[-100px] h-[400px] w-[400px] rounded-full bg-blue-700/[0.06] blur-[120px]" />
       </div>
 
       {/* ABOUT SECTION */}
-      <section
-        className={`
-          relative mx-auto grid min-h-screen max-w-[1440px]
-          grid-cols-1 items-center
-          gap-14
-          px-6
-          pt-14 pb-24
-          sm:px-10 sm:pt-16
-          lg:grid-cols-[1.1fr_1.2fr]
-          lg:gap-10
-          lg:px-[4.4%]
-          lg:py-0
-        `}
-      >
+      <section className="relative mx-auto grid min-h-screen max-w-[1440px] grid-cols-1 items-center gap-8 px-6 pb-16 pt-8 sm:gap-10 sm:px-10 sm:pt-12 lg:grid-cols-[1.1fr_1.2fr] lg:gap-10 lg:px-[4.4%] lg:py-16">
 
-        {/* RIGHT CONTENT - PROFILE IMAGE AND STATS */}
-        <div
-          className={`
-            relative order-1
-            mx-auto flex w-full max-w-[680px]
-            flex-col items-center justify-center
-            lg:order-2 lg:ml-auto
-            lg:flex-row lg:items-center lg:justify-center
-            lg:gap-6
-          `}
-        >
-
-          {/* BLUE TOP BORDER */}
-          <div className="about-border-top absolute left-[23%] top-[-30px] hidden h-[35px] w-[175px] rounded-t-[20px] border-t-2 border-x border-[#087df5]/60 sm:block" />
-
-          {/* BLUE LEFT/BOTTOM BORDER */}
-          <div className="about-border-left absolute left-[-1%] top-[48%] hidden h-[200px] w-[135px] rounded-bl-[28px] border-b-2 border-l-2 border-[#087df5] sm:block" />
-
-          {/* PROFILE IMAGE */}
-          <div
-            className={`
-              about-profile relative z-10 shrink-0
-              h-[430px] w-[290px]
-              overflow-hidden rounded-[13px]
-              border border-[#8da9c9]/50
-              shadow-[0_10px_45px_rgba(0,80,180,0.12)]
-              sm:h-[470px] sm:w-[320px]
-              lg:h-[450px] lg:w-[300px]
-              xl:h-[490px] xl:w-[330px]
-            `}
-          >
-            <Image
-              src="/image/Profile3.jpeg"
-              alt="Muhammad Zamin"
-              fill
-              priority
-              sizes="(min-width: 1280px) 330px, (min-width: 1024px) 300px, (min-width: 640px) 320px, 290px"
-              className="object-cover object-top"
-            />
-          </div>
-
-          {/* STATISTICS - BELOW IMAGE ON MOBILE, BESIDE IMAGE ON DESKTOP */}
-          <div
-            className={`
-              relative z-20
-              mt-8 grid w-full max-w-[500px]
-              grid-cols-3 gap-2
-              sm:mt-10 sm:gap-4
-              lg:mt-0 lg:w-[155px]
-              lg:max-w-none lg:shrink-0
-              lg:grid-cols-1 lg:gap-4
-            `}
-          >
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                style={{ animationDelay: `${1 + index * 0.2}s` }}
-                className={`
-                  about-stat flex
-                  min-w-0
-                  h-[105px]
-                  flex-col items-center justify-center
-                  rounded-[12px]
-                  border border-[#253b55]
-                  bg-[#0b1727]/90
-                  px-2
-                  text-center
-                  shadow-[0_5px_20px_rgba(0,0,0,0.15)]
-                  transition-all duration-300
-                  hover:-translate-y-1
-                  hover:border-[#1685f8]/70
-                  hover:bg-[#10213a]
-                  sm:h-[115px] sm:px-3
-                  lg:h-[105px] lg:items-start
-                  lg:px-5 lg:text-left
-                `}
-              >
-                <h3 className="text-[23px] font-bold leading-none text-white sm:text-[30px]">
-                  {stat.number}
-                </h3>
-
-                <p className="mt-2 text-[10px] leading-snug text-[#d0dced] sm:mt-3 sm:text-[12px] lg:text-[13px]">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* SIGNATURE */}
-          <div
-            className={`
-              about-signature relative z-20
-              mt-7 self-end
-              rotate-[-10deg]
-              lg:absolute lg:-bottom-[75px] lg:right-[5%]
-              lg:mt-0
-            `}
-          >
-            <p className="whitespace-nowrap font-serif text-[23px] italic text-white sm:text-[27px]">
-              Muhammad Zamin
-            </p>
-
-            <div className="ml-5 mt-2 h-[2px] w-[105px] rotate-[-10deg] bg-[#1685f8]" />
-          </div>
-
-        </div>
-
-        {/* LEFT CONTENT - ABOUT TEXT */}
-        <div
-          className={`
-            about-slide-left relative z-10
-            order-2
-            lg:order-1
-          `}
-        >
+        {/* LEFT CONTENT */}
+        <div className="relative z-10 order-1 lg:order-1">
 
           {/* ABOUT LABEL */}
-          <div className="about-fade about-delay-200 mb-5 flex items-center gap-3">
+          <div className="mb-5 flex items-center gap-3">
             <span className="text-[12px] font-medium tracking-[2px] text-[#a5bad5]">
               ABOUT ME
             </span>
-
             <span className="h-px w-[55px] bg-[#53759f]" />
           </div>
 
           {/* HEADING */}
-          <h1 className="about-fade about-delay-400 max-w-[600px] text-[34px] font-extrabold leading-[1.22] tracking-[-0.8px] sm:text-[40px] lg:text-[44px] xl:text-[46px]">
+          <h1 className="max-w-[600px] text-[29px] font-extrabold leading-[1.22] tracking-[-0.8px] min-[400px]:text-[32px] sm:text-[40px] lg:text-[44px] xl:text-[46px]">
             I'm a Frontend Developer
             <br className="hidden xl:block" />
             {" "}with a passion for creating
@@ -228,21 +93,44 @@ export default function About() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="about-fade about-delay-600 mt-5 max-w-[560px] text-[15px] leading-[1.85] text-[#c1d0e2] sm:text-[16px]">
+          <p className="mt-4 max-w-[560px] text-[14px] leading-[1.8] text-[#c1d0e2] sm:mt-5 sm:text-[16px]">
             I specialize in building modern, responsive and user-friendly
             web applications. With a strong focus on clean code and
             performance, I turn ideas into digital solutions.
           </p>
 
-          {/* FEATURE LIST */}
-          <div className="mt-8 space-y-5">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                style={{ animationDelay: `${0.8 + index * 0.2}s` }}
-                className="about-feature flex items-center gap-4"
-              >
-                <div className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full border border-blue-500/20 bg-[#082b62] text-[#9ed0ff] shadow-[0_0_15px_rgba(0,100,255,0.12)] transition-all duration-300 hover:scale-110 hover:bg-[#087df5]">
+          {/* MOBILE PROFILE IMAGE */}
+          <div className="relative mt-7 h-[200px] w-full overflow-hidden rounded-[13px] border border-[#1685f8]/40 bg-[#0b1727] shadow-[0_0_25px_rgba(0,100,255,0.12)] sm:mt-8 sm:h-[210px] lg:hidden">
+
+            <Image
+              src="/image/profile4.jpeg"
+              alt="Muhammad Zamin"
+              fill
+              priority
+              sizes="(max-width: 1023px) 100vw, 0px"
+              className="object-cover object-[center_35%]"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050d18]/10 via-transparent to-[#050d18]/30" />
+
+            {/* SIGNATURE */}
+            <div className="absolute right-[5%] top-1/2 z-10 -translate-y-1/2 -rotate-[10deg]">
+              <p className="whitespace-nowrap font-serif text-[20px] italic text-white min-[400px]:text-[23px] sm:text-[27px]">
+                Muhammad
+              </p>
+              <p className="ml-8 whitespace-nowrap font-serif text-[20px] italic text-white min-[400px]:text-[23px] sm:text-[27px]">
+                Zamin
+              </p>
+              <div className="ml-10 mt-1 h-[2px] w-[85px] -rotate-[10deg] bg-[#1685f8]" />
+            </div>
+          </div>
+
+          {/* FEATURES */}
+          <div className="mt-7 space-y-5 sm:mt-8 sm:space-y-6">
+            {features.map((feature) => (
+              <div key={feature.title} className="group flex items-center gap-4">
+
+                <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full border border-blue-500/20 bg-[#082b62] text-[#9ed0ff] shadow-[0_0_15px_rgba(0,100,255,0.12)] transition-all duration-300 group-hover:scale-110 group-hover:bg-[#087df5]">
                   <FeatureIcon type={feature.icon} />
                 </div>
 
@@ -250,11 +138,11 @@ export default function About() {
                   <h3 className="text-[15px] font-semibold text-white sm:text-[16px]">
                     {feature.title}
                   </h3>
-
                   <p className="mt-1 text-[12px] leading-relaxed text-[#a7bad3] sm:text-[13px]">
                     {feature.description}
                   </p>
                 </div>
+
               </div>
             ))}
           </div>
@@ -263,28 +151,10 @@ export default function About() {
           <a
             href="/Muhammad-Zamin-CV.pdf"
             download
-            className={`
-              about-fade about-delay-1400
-              mt-8 inline-flex h-[46px]
-              items-center gap-3
-              rounded-full bg-[#087df5]
-              px-7 text-[14px] font-semibold text-white
-              shadow-[0_5px_20px_rgba(0,110,255,0.2)]
-              transition-all duration-300
-              hover:-translate-y-1
-              hover:bg-[#0069dc]
-              hover:shadow-[0_8px_25px_rgba(0,110,255,0.35)]
-            `}
+            className="mt-8 inline-flex h-[48px] w-full items-center justify-center gap-3 rounded-full bg-[#087df5] px-7 text-[14px] font-semibold text-white shadow-[0_5px_20px_rgba(0,110,255,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#0069dc] hover:shadow-[0_8px_25px_rgba(0,110,255,0.35)] sm:w-auto"
           >
             Download CV
-
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="h-5 w-5"
-            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
               <path d="M12 3v12m-5-5 5 5 5-5" />
               <path d="M5 17v3h14v-3" />
             </svg>
@@ -292,160 +162,54 @@ export default function About() {
 
         </div>
 
+        {/* DESKTOP PROFILE AND STATISTICS */}
+        <div className="relative order-2 mx-auto hidden w-full max-w-[680px] items-center justify-center lg:order-2 lg:flex">
+
+          {/* DECORATIVE BORDER */}
+          {/* <div className="absolute left-[23%] top-[-30px] h-[200px] w-[135px] rounded-tr-[20px] border-x border-t-2 border-[#087df5]/60" /> */}
+          <div className="absolute right-[35%] top-[-5%] h-[200px] w-[135px] rounded-tr-[28px] border-t-8 border-r-3 border-[#087df5] shadow-[4px_-4px_12px_rgba(8,125,245,0.25)]" />
+          <div className="absolute left-[8%] top-[65%] h-[200px] w-[135px] rounded-bl-[28px] border-b-8 border-l-2 border-[#087df5]" />
+
+          {/* DESKTOP IMAGE */}
+          <div className="relative z-10 h-[430px] w-[290px] overflow-hidden rounded-[13px] border border-[#8da9c9]/50 shadow-[0_10px_45px_rgba(0,80,180,0.12)] xl:h-[490px] xl:w-[330px]">
+            <Image
+              src="/image/profile4.jpeg"
+              alt="Muhammad Zamin"
+              fill
+              priority
+              sizes="(min-width: 1280px) 330px, 290px"
+              className="object-cover object-top"
+            />
+          </div>
+
+          {/* DESKTOP STATISTICS */}
+          <div className="relative z-20 ml-4 flex w-[135px] shrink-0 flex-col gap-4 sm:ml-6 sm:w-[155px]">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex h-[105px] flex-col justify-center rounded-[12px] border border-[#253b55] bg-[#0b1727]/90 px-4 shadow-[0_5px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 hover:border-[#1685f8]/70 hover:bg-[#10213a] sm:px-5"
+              >
+                <h3 className="text-[28px] font-bold leading-none text-white sm:text-[32px]">
+                  {stat.number}
+                </h3>
+                <p className="mt-3 text-[11px] leading-relaxed text-[#d0dced] sm:text-[13px]">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* DESKTOP SIGNATURE */}
+          <div className="absolute -bottom-[75px] right-[5%] z-20 -rotate-[10deg]">
+            <p className="whitespace-nowrap font-serif text-[23px] italic text-white sm:text-[27px]">
+              Muhammad Zamin
+            </p>
+            <div className="ml-5 mt-2 h-[2px] w-[105px] -rotate-[10deg] bg-[#1685f8]" />
+          </div>
+
+        </div>
+
       </section>
-
-      {/* ABOUT PAGE ANIMATIONS */}
-      <style jsx global>{`
-        @keyframes aboutSlideLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-60px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes aboutSlideRight {
-          from {
-            opacity: 0;
-            transform: translateX(70px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes aboutFadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes aboutGlow {
-          0%, 100% {
-            opacity: 0.4;
-            scale: 1;
-          }
-          50% {
-            opacity: 0.8;
-            scale: 1.12;
-          }
-        }
-
-        @keyframes aboutFloat {
-          0%, 100% {
-            translate: 0 0;
-          }
-          50% {
-            translate: 0 -12px;
-          }
-        }
-
-        @keyframes aboutBorder {
-          from {
-            opacity: 0;
-            scale: 0.8;
-          }
-          to {
-            opacity: 1;
-            scale: 1;
-          }
-        }
-
-        .about-slide-left {
-          animation: aboutSlideLeft 0.9s ease-out both;
-        }
-
-        .about-fade {
-          opacity: 0;
-          animation: aboutFadeUp 0.8s ease-out both;
-        }
-
-        .about-feature {
-          opacity: 0;
-          animation: aboutFadeUp 0.8s ease-out both;
-        }
-
-        .about-profile {
-          animation: aboutSlideRight 1.2s ease-out both;
-        }
-
-        .about-stat {
-          opacity: 0;
-          animation: aboutFadeUp 0.8s ease-out both;
-        }
-
-        .about-signature {
-          animation:
-            aboutFadeUp 1s ease-out 1.4s both,
-            aboutFloat 4s ease-in-out 2.4s infinite;
-        }
-
-        .about-glow {
-          animation: aboutGlow 6s ease-in-out infinite;
-        }
-
-        .about-glow-delayed {
-          animation: aboutGlow 7s ease-in-out 1s infinite;
-        }
-
-        .about-border-top {
-          transform-origin: left;
-          animation: aboutBorder 1s ease-out 0.5s both;
-        }
-
-        .about-border-left {
-          transform-origin: bottom left;
-          animation: aboutBorder 1s ease-out 0.8s both;
-        }
-
-        .about-delay-200 {
-          animation-delay: 0.2s;
-        }
-
-        .about-delay-400 {
-          animation-delay: 0.4s;
-        }
-
-        .about-delay-600 {
-          animation-delay: 0.6s;
-        }
-
-        .about-delay-1400 {
-          animation-delay: 1.4s;
-        }
-
-        @media (max-width: 767px) {
-          .about-profile {
-            animation: aboutFadeUp 1s ease-out both;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .about-slide-left,
-          .about-fade,
-          .about-feature,
-          .about-profile,
-          .about-stat,
-          .about-signature,
-          .about-glow,
-          .about-glow-delayed,
-          .about-border-top,
-          .about-border-left {
-            animation: none !important;
-            opacity: 1;
-          }
-        }
-      `}</style>
-
     </main>
   );
 }

@@ -43,42 +43,26 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col items-center overflow-hidden border-b border-white/10 px-6 sm:px-10 md:flex-row md:items-center lg:px-[7.3%]">
 
-        {/* MOBILE PROFILE IMAGE */}
-        <div className="relative z-10 mb-6 mt-10 flex h-[300px] w-full items-center justify-center md:hidden">
-
-          <div className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0754bd]/40 shadow-[0_0_50px_20px_rgba(22,133,248,0.25)] blur-[1px]" />
-
-          <div className="animate-glow absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/15 blur-[65px]" />
-
-          <div className="animate-mobile-profile relative z-10 h-full w-full max-w-[320px]">
-            <Image
-              src="/image/profile.png"
-              alt="Muhammad Zamin - Frontend Developer"
-              fill
-              priority
-              sizes="320px"
-              className="object-contain object-bottom"
-            />
-          </div>
-
-        </div>
-
         {/* LEFT CONTENT */}
-        <div className="animate-slide-left relative z-20 w-full max-w-[600px] py-12 md:max-w-[52%] md:py-24 lg:max-w-[600px] lg:py-0">
+        <div className="animate-slide-left relative order-1 z-20 w-full max-w-[600px] py-12 md:order-none md:max-w-[52%] md:py-24 lg:max-w-[600px] lg:py-0">
 
+          {/* INTRO */}
           <p className="animate-fade-up animation-delay-200 mb-2 text-[19px] font-semibold text-white sm:text-[21px]">
             Hello, I'm
           </p>
 
+          {/* MAIN HEADING */}
           <h1 className="animate-fade-up animation-delay-400 text-[42px] font-extrabold leading-[1.15] tracking-tight sm:text-[54px] lg:text-[62px]">
             ZAMIN{" "}
             <span className="text-[#1685f8]">RAZZAQ</span>
           </h1>
 
+          {/* DEVELOPER TITLE */}
           <h2 className="animate-fade-up animation-delay-600 mt-3 text-[26px] font-semibold text-[#789acb] sm:text-[31px] lg:text-[34px]">
             Frontend Developer
           </h2>
 
+          {/* DESCRIPTION */}
           <p className="animate-fade-up animation-delay-800 mt-4 max-w-[450px] text-[16px] leading-[1.8] text-[#c4d1e3] sm:text-[17px]">
             I'm a passionate Frontend Developer with a focus on
             building modern, responsive and user-friendly web
@@ -113,11 +97,11 @@ export default function Home() {
               <a
                 key={social.name}
                 href={social.href}
-                target="_blank"
+                target={social.name === "Instagram" ? "_blank" : "_blank"}
                 rel="noopener noreferrer"
                 aria-label={social.name}
                 style={{ animationDelay: `${1.3 + index * 0.12}s` }}
-                className="animate-social flex h-[42px] w-[42px] items-center justify-center rounded-full border border-[#263b55] bg-[#101d2d] text-[16px] font-bold text-white transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-blue-400 hover:bg-blue-500"
+                className="animate-social flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#263b55] bg-[#101d2d] text-[16px] font-bold text-white transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-blue-400 hover:bg-blue-500"
               >
                 {social.icon}
               </a>
@@ -127,7 +111,7 @@ export default function Home() {
           {/* SCROLL INDICATOR */}
           <a
             href="#about"
-            className="animate-fade-up animation-delay-1400 mt-14 flex items-center gap-4 text-[14px] text-[#8ba8d0] transition hover:text-white"
+            className="animate-fade-up animation-delay-1400 mt-14 hidden items-center gap-4 text-[14px] text-[#8ba8d0] transition hover:text-white md:flex"
           >
             <span className="animate-scroll flex h-[32px] w-[19px] items-start justify-center rounded-full border border-[#9bb8e0] p-[5px]">
               <span className="h-[6px] w-[3px] rounded-full bg-white" />
@@ -137,11 +121,51 @@ export default function Home() {
 
         </div>
 
-        {/* TABLET PROFILE IMAGE: 768px–1023px */}
+        {/* =====================================
+            MOBILE PROFILE IMAGE
+            BELOW ALL TEXT
+        ====================================== */}
+        <div className="relative order-2 z-10 mt-0 mb-0 flex h-[430px] w-full max-w-[520px] items-end justify-center md:hidden">
+
+          {/* BLUE SHADOW CIRCLE */}
+          <div className="absolute bottom-[5%] left-1/2 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-[#0754bd]/40 shadow-[0_0_50px_20px_rgba(22,133,248,0.25)] blur-[1px]" />
+
+          {/* EXTRA BLUE GLOW */}
+          <div className="animate-glow absolute bottom-[10%] left-1/2 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-blue-500/15 blur-[65px]" />
+
+          {/* MOBILE PROFILE IMAGE */}
+          <div className="animate-mobile-profile relative z-10 h-full w-full max-w-[500px]">
+            <Image
+              src="/image/profile.png"
+              alt="Muhammad Zamin - Frontend Developer"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 500px"
+              className="object-contain object-bottom"
+            />
+          </div>
+
+          {/* HANDWRITTEN MESSAGE */}
+          <div className="animate-handwriting absolute right-[1%] top-[19%] z-20 rotate-[-8deg] font-serif text-[25px] italic leading-[1.2] text-[#168cff] min-[400px]:right-[3%] min-[400px]:text-[28px]">
+            <p>Build</p>
+            <p>Something</p>
+            <p>Great</p>
+
+            <div className="ml-5 mt-2 h-[2px] w-20 rotate-[-15deg] bg-[#168cff]" />
+          </div>
+
+        </div>
+
+        {/* =====================================
+            TABLET PROFILE IMAGE
+            768px - 1023px
+        ====================================== */}
         <div className="pointer-events-none absolute right-0 top-0 z-10 hidden h-[75%] w-[48%] items-start justify-end md:flex lg:hidden">
 
+          {/* BLUE GLOW */}
           <div className="animate-glow absolute right-[5%] top-[10%] h-[280px] w-[280px] rounded-full bg-blue-600/15 blur-[80px]" />
 
+          {/* PROFILE IMAGE */}
           <div className="animate-profile relative mt-8 h-full w-full">
             <Image
               src="/image/profile.png"
@@ -155,25 +179,41 @@ export default function Home() {
 
         </div>
 
-        {/* DESKTOP / LAPTOP / 4K PROFILE IMAGE: 1024px+ */}
-        <div className="pointer-events-none absolute bottom-0 right-0 z-10 hidden h-full w-[58%] items-end justify-center lg:flex">
+        {/* =====================================
+            DESKTOP / LAPTOP / 4K PROFILE IMAGE
+            1024px AND ABOVE
+        ====================================== */}
+        <div className="desktop-profile pointer-events-none absolute bottom-0 right-0 z-10 hidden h-full w-[58%] items-end justify-center lg:flex">
 
-          {/* BLUE CIRCLE */}
+          {/* BLUE CIRCULAR BACKGROUND */}
           <div className="animate-circle absolute bottom-[-100px] left-[8%] h-[430px] w-[430px] rounded-full bg-[#0754bd]/40 blur-[1px] 2xl:h-[550px] 2xl:w-[550px]" />
 
-          {/* BLUE GLOW */}
+          {/* EXTRA BLUE GLOW */}
           <div className="animate-glow absolute bottom-[20px] right-[15%] h-[380px] w-[380px] rounded-full bg-blue-600/10 blur-[80px] 2xl:h-[480px] 2xl:w-[480px]" />
 
-          {/* PROFILE IMAGE - SAME IMAGE ON ALL DESKTOP SIZES */}
+          {/* DESKTOP PROFILE IMAGE */}
           <div className="animate-profile relative z-10 h-[95%] w-full">
+
+            {/* NORMAL LAPTOP / DESKTOP */}
             <Image
               src="/image/profile.png"
               alt="Muhammad Zamin - Frontend Developer"
               fill
               priority
-              sizes="(min-width: 1440px) 835px, 58vw"
-              className="object-contain object-bottom"
+              sizes="58vw"
+              className="profile-normal object-contain object-bottom"
             />
+
+            {/* 4K PROFILE IMAGE */}
+            <Image
+              src="/image/profile.png"
+              alt="Muhammad Zamin - Frontend Developer"
+              fill
+              priority
+              sizes="58vw"
+              className="profile-4k object-contain object-bottom"
+            />
+
           </div>
 
           {/* HANDWRITTEN MESSAGE */}
@@ -181,6 +221,7 @@ export default function Home() {
             <p>Build</p>
             <p>Something</p>
             <p>Great</p>
+
             <div className="ml-5 mt-2 h-[2px] w-20 rotate-[-15deg] bg-[#168cff]" />
           </div>
 
@@ -188,9 +229,27 @@ export default function Home() {
 
       </section>
 
-      {/* ANIMATIONS */}
+      {/* =====================================
+          PAGE ANIMATIONS & RESPONSIVE STYLES
+      ====================================== */}
       <style jsx global>{`
 
+        /* 4K IMAGE SWITCHING */
+        .profile-4k {
+          display: none;
+        }
+
+        @media (min-width: 2560px) {
+          .profile-normal {
+            display: none;
+          }
+
+          .profile-4k {
+            display: block;
+          }
+        }
+
+        /* SLIDE LEFT */
         @keyframes slideLeft {
           from {
             opacity: 0;
@@ -202,6 +261,7 @@ export default function Home() {
           }
         }
 
+        /* FADE UP */
         @keyframes fadeUp {
           from {
             opacity: 0;
@@ -213,6 +273,7 @@ export default function Home() {
           }
         }
 
+        /* SLIDE RIGHT */
         @keyframes slideRight {
           from {
             opacity: 0;
@@ -224,6 +285,7 @@ export default function Home() {
           }
         }
 
+        /* FLOATING TEXT */
         @keyframes floatText {
           0%, 100% {
             translate: 0 0;
@@ -233,6 +295,7 @@ export default function Home() {
           }
         }
 
+        /* GLOW EFFECT */
         @keyframes glowEffect {
           0%, 100% {
             opacity: 0.4;
@@ -244,6 +307,7 @@ export default function Home() {
           }
         }
 
+        /* CIRCLE EFFECT */
         @keyframes circleEffect {
           from {
             opacity: 0;
@@ -255,6 +319,7 @@ export default function Home() {
           }
         }
 
+        /* SCROLL EFFECT */
         @keyframes scrollEffect {
           0%, 100% {
             transform: translateY(0);
@@ -338,6 +403,7 @@ export default function Home() {
           animation-delay: 1.4s;
         }
 
+        /* REDUCED MOTION */
         @media (prefers-reduced-motion: reduce) {
           .animate-slide-left,
           .animate-fade-up,

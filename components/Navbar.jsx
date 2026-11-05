@@ -96,7 +96,7 @@ export default function Navbar() {
             "
           >
             <Image
-              src="/image/Profile3.jpeg"
+              src="/image/profile4.jpeg"
               alt="Muhammad Zamin"
               fill
               sizes="60px"
