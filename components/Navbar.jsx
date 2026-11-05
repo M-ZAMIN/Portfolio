@@ -32,8 +32,10 @@ export default function Navbar() {
     >
       <div
         className="
-          relative mx-auto flex h-full max-w-[1400px]
-          items-center justify-between px-[35px]
+          relative mx-auto grid h-full max-w-[1400px]
+          grid-cols-[1fr_auto_1fr]
+          items-center
+          px-[35px]
           max-lg:px-[25px]
           max-md:px-[20px]
           max-[480px]:px-[15px]
@@ -44,7 +46,8 @@ export default function Navbar() {
           href="/"
           onClick={() => setMenuOpen(false)}
           className="
-            z-20 flex items-center
+            relative z-20 flex shrink-0 items-center
+            justify-self-start
             transition-transform duration-300
             hover:scale-105
           "
@@ -56,11 +59,12 @@ export default function Navbar() {
             height={65}
             priority
             className="
-              h-[58px] w-[180px]
-              object-contain object-left
-              max-md:h-[48px] max-md:w-[145px]
-              max-[480px]:h-[42px] max-[480px]:w-[125px]
-            "
+                h-auto w-[180px]
+                object-contain object-left
+                max-md:w-[125px]
+                max-[480px]:w-[105px]
+                max-[360px]:w-[90px]
+"
           />
         </Link>
 
@@ -68,15 +72,16 @@ export default function Navbar() {
         <Link
           href="/about"
           aria-label="Visit About page"
+          onClick={() => setMenuOpen(false)}
           className="
-            absolute left-1/2 top-1/2 z-10
-            -translate-x-1/2 -translate-y-1/2
+            relative z-20
+            flex items-center justify-center
+            justify-self-center
             rounded-full
             shadow-[0_0_18px_rgba(22,136,255,0.30)]
             transition-all duration-300 ease-out
             hover:scale-110
             hover:shadow-[0_0_30px_rgba(22,136,255,0.65)]
-            max-md:shadow-[0_0_14px_rgba(22,136,255,0.30)]
           "
         >
           <div
@@ -87,23 +92,25 @@ export default function Navbar() {
               transition-all duration-300 ease-out
               max-md:h-[46px] max-md:w-[46px]
               max-[480px]:h-[40px] max-[480px]:w-[40px]
+              max-[360px]:h-[36px] max-[360px]:w-[36px]
             "
           >
             <Image
               src="/image/Profile3.jpeg"
               alt="Muhammad Zamin"
               fill
-              sizes="55px"
+              sizes="60px"
               className="object-cover"
               priority
             />
           </div>
         </Link>
 
-        {/* RIGHT SIDE - NAVIGATION */}
+        {/* RIGHT SIDE - DESKTOP NAVIGATION */}
         <nav
           className={`
             ml-auto flex h-full items-center gap-[45px]
+            justify-self-end
             max-lg:gap-[25px]
 
             max-md:absolute
@@ -196,12 +203,15 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           className="
-            z-20 hidden h-[42px] w-[42px]
-            cursor-pointer flex-col items-center
-            justify-center rounded-[8px]
+            relative z-30
+            hidden h-[42px] w-[42px]
+            shrink-0 cursor-pointer
+            flex-col items-center justify-center
+            justify-self-end
+            rounded-[8px]
             border border-[#d1d5db]
             bg-transparent p-[8px]
             max-md:flex

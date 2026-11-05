@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -69,27 +70,154 @@ export default function About() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050d18] text-white">
 
-      {/* Background effects */}
+      {/* BACKGROUND EFFECTS */}
       <div className="pointer-events-none absolute inset-0">
         <div className="about-glow absolute left-[35%] top-[15%] h-[400px] w-[400px] rounded-full bg-blue-700/[0.04] blur-[120px]" />
         <div className="about-glow-delayed absolute bottom-[-150px] right-[-100px] h-[400px] w-[400px] rounded-full bg-blue-700/[0.06] blur-[120px]" />
       </div>
 
-      {/* About Section */}
-      <section className="relative mx-auto grid min-h-screen max-w-[1440px] grid-cols-1 items-center gap-16 px-6 pt-0 pb-20 sm:px-10 lg:grid-cols-[1.1fr_1.2fr] lg:gap-10 lg:px-[4.4%] lg:py-0">
+      {/* ABOUT SECTION */}
+      <section
+        className={`
+          relative mx-auto grid min-h-screen max-w-[1440px]
+          grid-cols-1 items-center
+          gap-14
+          px-6
+          pt-14 pb-24
+          sm:px-10 sm:pt-16
+          lg:grid-cols-[1.1fr_1.2fr]
+          lg:gap-10
+          lg:px-[4.4%]
+          lg:py-0
+        `}
+      >
 
-        {/* LEFT CONTENT */}
-        <div className="about-slide-left relative z-10">
+        {/* RIGHT CONTENT - PROFILE IMAGE AND STATS */}
+        <div
+          className={`
+            relative order-1
+            mx-auto flex w-full max-w-[680px]
+            flex-col items-center justify-center
+            lg:order-2 lg:ml-auto
+            lg:flex-row lg:items-center lg:justify-center
+            lg:gap-6
+          `}
+        >
 
-          {/* About label */}
+          {/* BLUE TOP BORDER */}
+          <div className="about-border-top absolute left-[23%] top-[-30px] hidden h-[35px] w-[175px] rounded-t-[20px] border-t-2 border-x border-[#087df5]/60 sm:block" />
+
+          {/* BLUE LEFT/BOTTOM BORDER */}
+          <div className="about-border-left absolute left-[-1%] top-[48%] hidden h-[200px] w-[135px] rounded-bl-[28px] border-b-2 border-l-2 border-[#087df5] sm:block" />
+
+          {/* PROFILE IMAGE */}
+          <div
+            className={`
+              about-profile relative z-10 shrink-0
+              h-[430px] w-[290px]
+              overflow-hidden rounded-[13px]
+              border border-[#8da9c9]/50
+              shadow-[0_10px_45px_rgba(0,80,180,0.12)]
+              sm:h-[470px] sm:w-[320px]
+              lg:h-[450px] lg:w-[300px]
+              xl:h-[490px] xl:w-[330px]
+            `}
+          >
+            <Image
+              src="/image/Profile3.jpeg"
+              alt="Muhammad Zamin"
+              fill
+              priority
+              sizes="(min-width: 1280px) 330px, (min-width: 1024px) 300px, (min-width: 640px) 320px, 290px"
+              className="object-cover object-top"
+            />
+          </div>
+
+          {/* STATISTICS - BELOW IMAGE ON MOBILE, BESIDE IMAGE ON DESKTOP */}
+          <div
+            className={`
+              relative z-20
+              mt-8 grid w-full max-w-[500px]
+              grid-cols-3 gap-2
+              sm:mt-10 sm:gap-4
+              lg:mt-0 lg:w-[155px]
+              lg:max-w-none lg:shrink-0
+              lg:grid-cols-1 lg:gap-4
+            `}
+          >
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                style={{ animationDelay: `${1 + index * 0.2}s` }}
+                className={`
+                  about-stat flex
+                  min-w-0
+                  h-[105px]
+                  flex-col items-center justify-center
+                  rounded-[12px]
+                  border border-[#253b55]
+                  bg-[#0b1727]/90
+                  px-2
+                  text-center
+                  shadow-[0_5px_20px_rgba(0,0,0,0.15)]
+                  transition-all duration-300
+                  hover:-translate-y-1
+                  hover:border-[#1685f8]/70
+                  hover:bg-[#10213a]
+                  sm:h-[115px] sm:px-3
+                  lg:h-[105px] lg:items-start
+                  lg:px-5 lg:text-left
+                `}
+              >
+                <h3 className="text-[23px] font-bold leading-none text-white sm:text-[30px]">
+                  {stat.number}
+                </h3>
+
+                <p className="mt-2 text-[10px] leading-snug text-[#d0dced] sm:mt-3 sm:text-[12px] lg:text-[13px]">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* SIGNATURE */}
+          <div
+            className={`
+              about-signature relative z-20
+              mt-7 self-end
+              rotate-[-10deg]
+              lg:absolute lg:-bottom-[75px] lg:right-[5%]
+              lg:mt-0
+            `}
+          >
+            <p className="whitespace-nowrap font-serif text-[23px] italic text-white sm:text-[27px]">
+              Muhammad Zamin
+            </p>
+
+            <div className="ml-5 mt-2 h-[2px] w-[105px] rotate-[-10deg] bg-[#1685f8]" />
+          </div>
+
+        </div>
+
+        {/* LEFT CONTENT - ABOUT TEXT */}
+        <div
+          className={`
+            about-slide-left relative z-10
+            order-2
+            lg:order-1
+          `}
+        >
+
+          {/* ABOUT LABEL */}
           <div className="about-fade about-delay-200 mb-5 flex items-center gap-3">
             <span className="text-[12px] font-medium tracking-[2px] text-[#a5bad5]">
               ABOUT ME
             </span>
+
             <span className="h-px w-[55px] bg-[#53759f]" />
           </div>
 
-          {/* Heading */}
+          {/* HEADING */}
           <h1 className="about-fade about-delay-400 max-w-[600px] text-[34px] font-extrabold leading-[1.22] tracking-[-0.8px] sm:text-[40px] lg:text-[44px] xl:text-[46px]">
             I'm a Frontend Developer
             <br className="hidden xl:block" />
@@ -99,16 +227,15 @@ export default function About() {
             </span>
           </h1>
 
-          {/* Description */}
+          {/* DESCRIPTION */}
           <p className="about-fade about-delay-600 mt-5 max-w-[560px] text-[15px] leading-[1.85] text-[#c1d0e2] sm:text-[16px]">
             I specialize in building modern, responsive and user-friendly
             web applications. With a strong focus on clean code and
             performance, I turn ideas into digital solutions.
           </p>
 
-          {/* Feature list */}
+          {/* FEATURE LIST */}
           <div className="mt-8 space-y-5">
-
             {features.map((feature, index) => (
               <div
                 key={feature.title}
@@ -123,20 +250,31 @@ export default function About() {
                   <h3 className="text-[15px] font-semibold text-white sm:text-[16px]">
                     {feature.title}
                   </h3>
+
                   <p className="mt-1 text-[12px] leading-relaxed text-[#a7bad3] sm:text-[13px]">
                     {feature.description}
                   </p>
                 </div>
               </div>
             ))}
-
           </div>
 
-          {/* Download CV */}
+          {/* DOWNLOAD CV */}
           <a
             href="/Muhammad-Zamin-CV.pdf"
             download
-            className="about-fade about-delay-1400 mt-8 inline-flex h-[46px] items-center gap-3 rounded-full bg-[#087df5] px-7 text-[14px] font-semibold text-white shadow-[0_5px_20px_rgba(0,110,255,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#0069dc] hover:shadow-[0_8px_25px_rgba(0,110,255,0.35)]"
+            className={`
+              about-fade about-delay-1400
+              mt-8 inline-flex h-[46px]
+              items-center gap-3
+              rounded-full bg-[#087df5]
+              px-7 text-[14px] font-semibold text-white
+              shadow-[0_5px_20px_rgba(0,110,255,0.2)]
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:bg-[#0069dc]
+              hover:shadow-[0_8px_25px_rgba(0,110,255,0.35)]
+            `}
           >
             Download CV
 
@@ -154,62 +292,9 @@ export default function About() {
 
         </div>
 
-        {/* RIGHT CONTENT */}
-        <div className="relative mx-auto flex w-full max-w-[680px] items-center justify-center lg:ml-auto">
-
-          {/* Blue top border */}
-          <div className="about-border-top absolute left-[23%] top-[-30px] h-[35px] w-[175px] rounded-t-[20px] border-t-2 border-x border-[#087df5]/60" />
-
-          {/* Blue left/bottom border */}
-          <div className="about-border-left absolute left-[-1%] top-[48%] h-[200px] w-[135px] rounded-bl-[28px] border-b-2 border-l-2 border-[#087df5]" />
-
-          {/* Profile image */}
-          <div className="about-profile relative z-10 h-[430px] w-[290px] overflow-hidden rounded-[13px] border border-[#8da9c9]/50 sm:h-[470px] sm:w-[320px] lg:h-[450px] lg:w-[300px] xl:h-[490px] xl:w-[330px]">
-            <Image
-              src="/image/Profile3.jpeg"
-              alt="Muhammad Zamin"
-              fill
-              priority
-              sizes="(min-width: 1280px) 330px, (min-width: 640px) 320px, 290px"
-              className="object-cover object-top"
-            />
-          </div>
-
-          {/* Statistics */}
-          <div className="relative z-20 ml-4 flex w-[135px] shrink-0 flex-col gap-4 sm:ml-6 sm:w-[155px]">
-
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                style={{ animationDelay: `${1 + index * 0.2}s` }}
-                className="about-stat flex h-[95px] flex-col justify-center rounded-[12px] border border-[#253b55] bg-[#0b1727]/90 px-4 shadow-[0_5px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 hover:border-[#1685f8]/70 hover:bg-[#10213a] sm:h-[105px] sm:px-5"
-              >
-                <h3 className="text-[28px] font-bold leading-none text-white sm:text-[32px]">
-                  {stat.number}
-                </h3>
-
-                <p className="mt-3 text-[11px] leading-relaxed text-[#d0dced] sm:text-[13px]">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-          {/* Signature */}
-          <div className="about-signature absolute -bottom-[75px] right-[5%] z-20 rotate-[-10deg]">
-            <p className="whitespace-nowrap font-serif text-[23px] italic text-white sm:text-[27px]">
-              Muhammad Zamin
-            </p>
-
-            <div className="ml-5 mt-2 h-[2px] w-[105px] rotate-[-10deg] bg-[#1685f8]" />
-          </div>
-
-        </div>
-
       </section>
 
-      {/* About page animations */}
+      {/* ABOUT PAGE ANIMATIONS */}
       <style jsx global>{`
         @keyframes aboutSlideLeft {
           from {
@@ -299,8 +384,9 @@ export default function About() {
         }
 
         .about-signature {
-          animation: aboutFadeUp 1s ease-out 1.4s both,
-                     aboutFloat 4s ease-in-out 2.4s infinite;
+          animation:
+            aboutFadeUp 1s ease-out 1.4s both,
+            aboutFloat 4s ease-in-out 2.4s infinite;
         }
 
         .about-glow {
@@ -321,10 +407,27 @@ export default function About() {
           animation: aboutBorder 1s ease-out 0.8s both;
         }
 
-        .about-delay-200 { animation-delay: 0.2s; }
-        .about-delay-400 { animation-delay: 0.4s; }
-        .about-delay-600 { animation-delay: 0.6s; }
-        .about-delay-1400 { animation-delay: 1.4s; }
+        .about-delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .about-delay-400 {
+          animation-delay: 0.4s;
+        }
+
+        .about-delay-600 {
+          animation-delay: 0.6s;
+        }
+
+        .about-delay-1400 {
+          animation-delay: 1.4s;
+        }
+
+        @media (max-width: 767px) {
+          .about-profile {
+            animation: aboutFadeUp 1s ease-out both;
+          }
+        }
 
         @media (prefers-reduced-motion: reduce) {
           .about-slide-left,
