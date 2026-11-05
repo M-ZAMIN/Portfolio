@@ -78,18 +78,15 @@ export default function Navbar() {
             flex items-center justify-center
             justify-self-center
             rounded-full
-            shadow-[0_0_18px_rgba(22,136,255,0.30)]
-            transition-all duration-300 ease-out
+           
             hover:scale-110
-            hover:shadow-[0_0_30px_rgba(22,136,255,0.65)]
           "
         >
           <div
             className="
-              relative h-[60px] w-[60px]
+              relative h-[70px] w-[70px]
               overflow-hidden rounded-full
-              shadow-[0_0_15px_3px_rgba(22,136,255,0.35),0_0_25px_5px_rgba(22,136,255,0.15)]
-              transition-all duration-300 ease-out
+
               max-md:h-[46px] max-md:w-[46px]
               max-[480px]:h-[40px] max-[480px]:w-[40px]
               max-[360px]:h-[36px] max-[360px]:w-[36px]
