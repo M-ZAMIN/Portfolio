@@ -59,12 +59,12 @@ export default function Home() {
 
           {/* DEVELOPER TITLE */}
           <h2 className="animate-fade-up animation-delay-600 mt-3 text-[26px] font-semibold text-[#789acb] sm:text-[31px] lg:text-[34px]">
-            Frontend Developer
+            Full-Stack Developer
           </h2>
 
           {/* DESCRIPTION */}
           <p className="animate-fade-up animation-delay-800 mt-4 max-w-[450px] text-[16px] leading-[1.8] text-[#c4d1e3] sm:text-[17px]">
-            I'm a passionate Frontend Developer with a focus on
+            I'm a passionate Full-Stack Developer with a focus on
             building modern, responsive and user-friendly web
             applications. I love turning ideas into real products
             with clean code and beautiful design.
@@ -137,7 +137,7 @@ export default function Home() {
           <div className="animate-mobile-profile relative z-10 h-full w-full max-w-[500px]">
             <Image
               src="/image/profile.png"
-              alt="Muhammad Zamin - Frontend Developer"
+              alt="ZAMIN RAZZAQ - Full-Stack Developer"
               fill
               priority
               sizes="(max-width: 767px) 100vw, 500px"

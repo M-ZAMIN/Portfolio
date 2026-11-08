@@ -84,7 +84,7 @@ export default function About() {
 
           {/* HEADING */}
           <h1 className="about-heading max-w-[600px] text-[29px] font-extrabold leading-[1.22] tracking-[-0.8px] min-[400px]:text-[32px] sm:text-[40px] lg:text-[44px] xl:text-[46px]">
-            I'm a Frontend Developer
+            I'm a Full-Stack Developer
             <br className="hidden xl:block" />
             {" "}with a passion for creating
             <span className="block text-[#1685f8]">
